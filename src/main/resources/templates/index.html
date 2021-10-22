@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>HelloSpring</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+        <h1>Hello World</h1>
+        <!-- Using Expression Language here! -->
+        <p th:text="${sayHi}"></p>
+        <p th:text = "${hi}"></p>
+        <!-- <p>Hello Spring, we're using Thymeleaf</p> -->
+        <br/>
+        Name: <span th:text = "${person.name}"></span> <br/>
+        Lastname: <span th:text = "${person.lastname}"></span> <br/>
+        Email: <span th:text = "${person.email}"></span> <br/>
+        Phone Number: <span th:text = "${person.phoneNumber}"></span> <br/>
+        <br/>
+
+        <div th:if="${people != null and !people.empty}">
+            <table border="1">
+                <tr>
+                    <th>Name</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                </tr>
+                <tr th:each="person : ${people}">
+                    <td th:text = "${person.name}"></td>
+                    <td th:text = "${person.lastname}"></td>
+                    <td th:text = "${person.email}"></td>
+                    <td th:text = "${person.phoneNumber}"></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${people == null or people.empty}">
+            People list is empty!!
+        </div>
+    </body>
+</html>
